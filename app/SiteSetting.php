@@ -33,17 +33,18 @@ class SiteSetting extends Model
     {
         return asset('site/img/' . $value);
     } // end of get name attribute
-    public function getAboutSection1Image2Attribute($value)
+  
+    public function getAskedQuestionsImageAttribute($value)
     {
-        return asset('images/site/' . $value);
-    } // end of get name attribute
-    public function getTeamSectionImageAttribute($value)
-    {
-        return asset('images/site/' . $value);
-    } // end of get name attribute
+        return asset('site/img/' . $value);
+    } // end of get asked question image attribute
     public function getChooseUsImageAttribute($value)
     {
         return asset('site/img/' . $value);
     } // end of get choose us attribute
+    public function getwhatClientsSaysImageAttribute($value)
+    {
+        return asset('site/img/' . $value);
+    } // end of get what_clients_says_image attribute
 
 }

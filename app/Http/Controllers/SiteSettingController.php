@@ -27,7 +27,7 @@ class SiteSettingController extends Controller
         //  return $request -> all();
         $site_settings = SiteSetting::findorFail(1);
 
-        $request_data = $request->except(['_token', '_method', 'logo', 'favicon','about_image','banner_vid','choose_us_image']);
+        $request_data = $request->except(['_token', '_method', 'logo', 'favicon','about_image','asked_questions_image','choose_us_image','what_clients_says_image']);
 
         foreach ($request_data as $index => $item) {
             if($request_data[$index] == null){
@@ -72,6 +72,16 @@ class SiteSettingController extends Controller
           
             $chooseUsImagePath = $this->saveImages( $request -> choose_us_image , 'site/img/');
             $request_data['choose_us_image'] = $chooseUsImagePath;
+        }
+        if($request->has('asked_questions_image')){
+          
+            $askedImagePath = $this->saveImages( $request -> asked_questions_image , 'site/img/');
+            $request_data['asked_questions_image'] = $askedImagePath;
+        }
+        if($request->has('what_clients_says_image')){
+          
+            $ImagePath = $this->saveImages( $request -> what_clients_says_image , 'site/img/');
+            $request_data['what_clients_says_image'] = $ImagePath;
         }
 
         $site_settings->update($request_data);

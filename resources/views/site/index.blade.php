@@ -91,7 +91,7 @@
                     <div class="title">about us</div>
                     <h2>Welcome to The London,</h2>
                   </div>
-                  <div class="text">
+                  <div class="white-text">
                     {!! app()->getLocale() == 'en' ? $site_settings->about_des: $site_settings->about_des_ar !!}
                   </div>
               
@@ -383,7 +383,7 @@
                   <div class="image">
                     <span class="triangle-one"></span>
                     <span class="triangle-two"></span>
-                    <img src="images/resource/faq.jpg" alt="" />
+                    <img src="{{ asset($site_settings->asked_questions_image) }}" alt="" />
                   </div>
                 </div>
               </div>
@@ -407,7 +407,7 @@
               <div class="image-column col-lg-6 col-md-12 col-sm-12">
                 <div class="inner-column">
                   <div class="image titlt" data-tilt data-tilt-max="2">
-                    <img src="images/resource/testimonial.jpg" alt="" />
+                    <img src="{{ asset($site_settings->what_clients_says_image) }}" alt="" />
                     <span class="triangle-one"></span>
                     <span class="triangle-two"></span>
                   </div>

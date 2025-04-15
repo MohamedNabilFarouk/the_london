@@ -65,6 +65,7 @@
         <!-- Header Upper -->
         <div class="header-upper">
           <div class="auto-container">
+            @include('admin.includes.messages')
             <div class="inner-container clearfix">
               <div class="logo-box">
                 <div class="logo">
@@ -97,10 +98,10 @@
                         
                       </li>
                       <li>
-                        <a href="#">About Us</a>
+                        <a href="{{ route('about') }}">About Us</a>
                       </li>
                       <li class="">
-                        <a href="#">Services</a>
+                        <a href="{{ route('services') }}">Services</a>
                        
                       </li>
                       <!-- <li class="">
@@ -109,7 +110,7 @@
                       </li> -->
                      
                      
-                      <li><a href="#">Contact us</a></li>
+                      <li><a href="{{ route('contact') }}">Contact us</a></li>
                     </ul>
                   </div>
                 </nav>
@@ -200,10 +201,11 @@
               <div class="form-column col-lg-7 col-md-12 col-sm-12">
                 <div class="inner-column">
                   <div class="newsletter-form">
-                    <form method="post" action="https://themeim.com/demo/carsore/contact.html">
+                    <form method="post" action="{{ route('add.subscriber') }}">
+                      @csrf
                       <div class="form-group">
                         <span class="icon fa fa-envelope"></span>
-                        <input type="email" name="email" value="" placeholder="Enter your mail" required="" />
+                        <input type="email" name="email" value="" placeholder="{{ __("Email Address") }}" required="" />
                         <button type="submit" class="theme-btn flaticon-send"></button>
                       </div>
                     </form>
@@ -231,7 +233,7 @@
                 <div class="inner-column">
                   <span class="icon flaticon-call-2"></span>
                   call now<br />
-                  <a href="tel:+10909876534">+10909876534</a>
+                  <a href="tel:{{ $site_settings->phone }}">{{ $site_settings->phone }}</a>
                 </div>
               </div>
 
@@ -240,7 +242,7 @@
                 <div class="inner-column">
                   <span class="icon flaticon-email-2"></span>
                   24*7 online Support<br />
-                  <a href="mailto:carsore@mail.com">The London@mail.com</a>
+                  <a href="mailto:{{ $site_settings->email }}">{{ $site_settings->email }}</a>
                 </div>
               </div>
 
@@ -248,8 +250,8 @@
               <div class="info-column col-lg-4 col-md-6 col-sm-12">
                 <div class="inner-column">
                   <span class="icon flaticon-maps-and-flags"></span>
-                  Office Adress<br />
-                  <strong>4309 Terry Lane, USA</strong>
+                   Address<br />
+                  <strong>{!! app()->getLocale() == 'en' ? $site_settings->address_en : $site_settings->address_ar !!}</strong>
                 </div>
               </div>
             </div>
@@ -265,25 +267,17 @@
                   <div class="logo">
                     <a href="{{ url('/') }}"><img src="{{ $site_settings->logo }}" alt="The London" /></a>
                   </div>
-                  <div class="text">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text.
+                  <div class="white-text">
+                    {!! app()->getLocale() == 'en' ? \Illuminate\Support\Str::limit($site_settings->about_des , 100 , '....'): \Illuminate\Support\Str::limit($site_settings->about_des_ar,100,'....') !!}
+
                   </div>
                   <!-- Social Box -->
                   <ul class="social-box">
+                    @foreach($social_settings as $s)
                     <li>
-                      <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
+                      <a href="{{ $s->value }}" target="_blank" class="fab fa-{{ $s->key }}"></a>
                     </li>
-                    <li>
-                      <a href="https://www.twitter.com/" class="fab fa-twitter"></a>
-                    </li>
-                    <li>
-                      <a href="https://google.com/" class="fab fa-google"></a>
-                    </li>
-                    <li>
-                      <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
-                    </li>
+                   @endforeach
                   </ul>
                 </div>
               </div>
@@ -296,26 +290,16 @@
                     <div class="column col-lg-6 col-md-6 col-sm-12">
                       <h3>Company</h3>
                       <ul class="list-links">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">our team</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">insurance</a></li>
-                        <!-- <li><a href="#">blog</a></li> -->
-                        <li><a href="#">contact us</a></li>
+                        <li><a href="{{ route('about') }}">About us</a></li>
+                       
+                        <li><a href="{{ route('services') }}">Services</a></li>
+                       
+                       
+                        <li><a href="{{ route('contact') }}">contact us</a></li>
                       </ul>
                     </div>
                     <!-- Column -->
-                    <div class="column col-lg-6 col-md-6 col-sm-12">
-                      <h3>Insurance</h3>
-                      <ul class="list-links">
-                        <li><a href="#">car insurance</a></li>
-                        <li><a href="#">bike insurance</a></li>
-                        <li><a href="#">bus insurance</a></li>
-                        <li><a href="#">mini truck insurance</a></li>
-                        <li><a href="#">jeep insurance</a></li>
-                        <li><a href="#">lorry insurance</a></li>
-                      </ul>
-                    </div>
+                   
                   </div>
                 </div>
               </div>
@@ -327,10 +311,11 @@
 
                   <!-- Quote Form -->
                   <div class="quote-form">
-                    <form method="post" action="https://themeim.com/demo/carsore/appointment.html">
+                    <form method="post" action="{{ url('sendMessage') }}">
+                      @csrf
                       <div class="clearfix">
                         <div class="form-group">
-                          <input type="text" name="username" placeholder="Your Name *" required="" />
+                          <input type="text" name="name" placeholder="Your Name *" required="" />
                         </div>
 
                         <div class="form-group">
@@ -339,13 +324,13 @@
 
                         <!--Form Group-->
                         <div class="form-group">
-                          <select class="custom-select-box nice-select">
-                            <option>Your Subject</option>
-                            <option>Subject 01</option>
-                            <option>Subject 02</option>
-                            <option>Subject 03</option>
-                            <option>Subject 04</option>
-                          </select>
+                          <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required="" />
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <textarea type="text" name="message" placeholder="Message" required=""></textarea>
                         </div>
 
                         <div class="form-group">
@@ -365,16 +350,11 @@
             <div class="clearfix">
               <div class="pull-left">
                 <div class="copyright">
-                  Copyright &copy; 2021. All rights reserved by <br />
+                  Copyright &copy; 2025. All rights reserved by <br />
                   <span>The London Company.</span>
                 </div>
               </div>
-              <div class="pull-right">
-                <ul class="footer-nav">
-                  <li><a href="privacy.html">Privacy Policy</a></li>
-                  <li><a href="terms.html">Terms & Condition</a></li>
-                </ul>
-              </div>
+             
             </div>
           </div>
         </div>

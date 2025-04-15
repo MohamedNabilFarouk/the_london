@@ -2014,6 +2014,9 @@ direction: rtl;
 }
 
 /*footer about*/
+.white-text p{
+	color: #fff;
+  }
 
 .footer-about {
 	position: relative;

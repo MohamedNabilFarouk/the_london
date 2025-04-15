@@ -34,7 +34,7 @@
   <!-- Contact Form Section -->
   <section class="contact-form-section">
     <div class="auto-container">
-        @include('admin.includes.messages')
+       
       <div class="row clearfix">
         <!-- Info Column -->
         <div class="info-column col-lg-6 col-md-12 col-sm-12">
@@ -96,18 +96,12 @@
             <h4>Social Links</h4>
             <!-- Social Box -->
             <ul class="social-box">
+              @foreach($social_settings as $s)
               <li>
-                <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
+                <a href="{{ $s->value }}" class="fab fa-{{ $s->key }}"></a>
               </li>
-              <li>
-                <a href="https://www.twitter.com/" class="fab fa-twitter"></a>
-              </li>
-              <li>
-                <a href="https://google.com/" class="fab fa-google"></a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/" class="fab fa-linkedin-in"></a>
-              </li>
+              @endforeach
+              
             </ul>
           </div>
         </div>

@@ -377,6 +377,58 @@
                             </tr>
 
                             {{-- end choose us --}}
+                            {{-- asked que image  --}}
+
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="d-flex justify-content-start flex-column m-auto">
+                                            <a href="#"
+                                                class="text-dark fw-bolder text-hover-primary mb-1 fs-6 text-center">asked questions image</a>
+                                        </div>
+                                    </div>
+                                </td>
+
+
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="d-flex justify-content-start flex-column">
+                                            <input type="file" name="asked_questions_image"
+                                                class="form-control input-sm aboutimage1" accept="jpg, png, jpeg, svg">
+                                            <img src="{{ $site_settings->asked_questions_image }}" width="100px"
+                                                class="img-thumbnail aboutimage1-preview mt-1" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            {{-- end asked que image  --}}
+                            {{-- what_clients_says_image  --}}
+
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="d-flex justify-content-start flex-column m-auto">
+                                            <a href="#"
+                                                class="text-dark fw-bolder text-hover-primary mb-1 fs-6 text-center">what clients says image</a>
+                                        </div>
+                                    </div>
+                                </td>
+
+
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="d-flex justify-content-start flex-column">
+                                            <input type="file" name="what_clients_says_image"
+                                                class="form-control input-sm aboutimage1" accept="jpg, png, jpeg, svg">
+                                            <img src="{{ $site_settings->what_clients_says_image }}" width="100px"
+                                                class="img-thumbnail aboutimage1-preview mt-1" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            {{-- what_clients_says_image  --}}
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">

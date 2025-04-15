@@ -6449,6 +6449,10 @@
 
 /* Benefits Section Ends */
 
+.white-text p{
+  color: #fff;
+}
+
 /* Footer Section Starts */
 .home-2 .main-footer {
   padding-top: 150px;

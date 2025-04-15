@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Seven-bond - Dashboard</title>
+    <title>{{ env('APP_NAME') }}</title>
     <meta name="title" content="" />
     <meta name="description"
         content="{{ $site_settings['meta_description_en']}}" />
