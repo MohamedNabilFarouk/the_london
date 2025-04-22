@@ -7,7 +7,7 @@
         <!--begin::Page title-->
         <div class="d-flex align-items-center me-3">
             <!--begin::Title-->
-            <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">Team
+            <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">Videos
             <!--begin::Separator-->
             <span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
             <!--end::Separator-->
@@ -29,10 +29,10 @@
     <!--begin::Header-->
     <div class="card-header rounded border-0 pt-5">
         <h3 class="card-title align-items-start flex-column">
-            <span class="card-label fw-bolder fs-3 mb-1">Team</span>
+            <span class="card-label fw-bolder fs-3 mb-1">Videos</span>
         </h3>
         <div class="card-toolbar">
-            <a href="{{route('team.create')}}" class="btn btn-sm btn-light-primary">
+            <a href="{{route('video.create')}}" class="btn btn-sm btn-light-primary">
             <!--begin::Svg Icon | path: icons/stockholm/Communication/Add-user.svg-->
             <span class="svg-icon svg-icon-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -53,22 +53,19 @@
                 <!--begin::Table head-->
                 <thead>
                     <tr class="text-center border-3 fw-bolder text-muted bg-light">
-                        <th class="ps-4 min-w-325px rounded-start">Name</th>
                         <th class="ps-4 min-w-325px rounded-start">Title en</th>
                         <th class="ps-4 min-w-325px rounded-start">Title Ar</th>
-                        <th class="ps-4 min-w-325px rounded-start">Description En</th>
-                        <th class="ps-4 min-w-325px rounded-start">Description Ar</th>
+                        <th class="ps-4 min-w-325px rounded-start">image</th>
+                        <th class="ps-4 min-w-325px rounded-start">Video</th>
                         <th class="min-w-200px rounded-end"></th>
                     </tr>
                 </thead>
                 <!--end::Table head-->
                 <!--begin::Table body-->
                 <tbody>
-                @foreach($team as $p)
+                @foreach($data as $p)
                     <tr class="text-center border-3 m-auto align-middle">
-                        <td class="px-3">
-                            <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{$p->name}}</a>
-                        </td>
+                        
                         <td class="px-3">
                             <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{$p->title_en}}</a>
                         </td>
@@ -76,18 +73,21 @@
                             <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{$p->title_ar}}</a>
                         </td>
                         <td class="px-3">
-                            <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{$p->des_en}}</a>
+                            <div class="symbol symbol-50px me-5">
+                                <img src="{{ $p-> image }}" class="" alt="" /> 
+                               {{-- <div class="icon btn btn-block btn-lg btn-soft-primary pe-none mb-6"> {!! $p->image !!} </div> --}}
+                           </div>
                         </td>
 
                          <td class="px-3">
-                            <a href="#" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{$p->des_ar}}</a>
+                            <a href="{{ $p->video }}" class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6">{{$p->video}}</a>
                         </td>
 
 
                          <td class="border text-center">
 
 
-                            <a href="{{ route('team.edit', $p->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                            <a href="{{ route('video.edit', $p->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                 <!--begin::Svg Icon | path: icons/stockholm/Communication/Write.svg-->
                                 <span class="svg-icon svg-icon-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -99,7 +99,7 @@
                             </a>
 
 
-                            <form action="{{ route('team.destroy', $p->id) }}" method="post" id='delform' style="display: inline-block">
+                            <form action="{{ route('video.destroy', $p->id) }}" method="post" id='delform' style="display: inline-block">
                                 @csrf
                                 @method('delete')
 
@@ -125,7 +125,7 @@
 
 
 <div class="col-12 d-flex justify-content-center">
-                                    {{ $team->links('pagination::bootstrap-4') }}
+                                    {{ $data->links('pagination::bootstrap-4') }}
                                 </div>
 
 @endsection

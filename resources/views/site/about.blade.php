@@ -48,8 +48,8 @@
               <div class="content-column col-lg-6 col-md-12 col-sm-12">
                 <div class="inner-column">
                     <div class="sec-title">
-                        <div class="title">about us</div>
-                        <h2>The London Car Trading Company</h2>
+                        <div class="title">{{ __("About Us") }}</div>
+                        <h2>{{ __("The London Car Trading Company") }}</h2>
                       </div>
                   <div class="text">
                     {!! app()->getLocale() == 'en' ? $site_settings->about_des: $site_settings->about_des_ar !!}

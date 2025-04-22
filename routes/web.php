@@ -62,6 +62,7 @@ Route::get('AddProduct','productController@create')->name('product.create');
 Route::resource('/project','ProjectController');
 Route::resource('/chooseUs','chooseUsController');
 Route::resource('/service','servicesController');
+Route::resource('/video','VideoController');
 Route::resource('/slider','SliderController');
 
 Route::resource('/blog','blogsController');

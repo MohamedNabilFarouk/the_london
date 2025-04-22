@@ -66,9 +66,9 @@
                                                 </svg>
                                             </span>
                                             <!--end::Svg Icon-->
-                                            <a href="{{ route('product.index') }}"
-                                                class="text-warning fw-bold fs-6">Products :</a> <br />
-                                            {{ COUNT($products) }}
+                                            <a href="{{ route('service.index') }}"
+                                                class="text-warning fw-bold fs-6">Services :</a> <br />
+                                            {{ COUNT($services) }}
 
                                         </div>
                                         <!--end::Col-->
@@ -87,9 +87,9 @@
                                                 </svg>
                                             </span>
                                             <!--end::Svg Icon-->
-                                            <a href="{{ route('project.index') }}"
-                                                class="text-primary fw-bold fs-6">Projects : </a> <br />
-                                            {{ COUNT($projects) }}
+                                            <a href="{{ route('subscribers.index') }}"
+                                                class="text-primary fw-bold fs-6">Subscribers : </a> <br />
+                                            {{ COUNT($subscribers) }}
                                         </div>
                                         <!--end::Col-->
                                     </div>
@@ -112,7 +112,7 @@
                                             </span>
                                             <!--end::Svg Icon-->
 
-                                            <a href="" class="text-danger fw-bold fs-6 mt-2">Messages : </a> <br />
+                                            <a href="{{ route('message.index') }}" class="text-danger fw-bold fs-6 mt-2">Messages : </a> <br />
                                             {{ count($messages) }}
                                         </div>
                                         <!--end::Col-->
@@ -355,7 +355,7 @@
                                     <!--begin::Table body-->
                                     <tbody>
 
-                                        @foreach ($messages as $index => $c)
+                                        @foreach ($messages->take(30) as $index => $c)
                                             <tr class="text-center border-3 m-auto">
                                                 <td class="px-3">
                                                     <div class="d-flex align-items-center">

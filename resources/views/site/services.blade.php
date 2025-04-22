@@ -29,10 +29,9 @@
     <div class="auto-container">
       <!-- Sec Title -->
       <div class="sec-title centered">
-        <h2>We ensure best services</h2>
+        <h2>{{ __("We ensure best services") }}</h2>
         <div class="text">
-          We are a professional and creative company and we <br />
-          offer you a trusty Trading cars services.
+          {{ __("We are a professional and creative company and we offer you a trusty Trading cars services") }}
         </div>
       </div>
       <!-- End Sec Title -->
@@ -59,7 +58,7 @@
                   {{ \Illuminate\Support\Str::limit(strip_tags($s->des), 100, '...') }}
 
                 </div>
-                <a href="{{ route('service.details', $s->slug) }}" class="read-more">Read More</a>
+                <a href="{{ route('service.details', $s->slug) }}" class="read-more">{{ __("Read More") }}</a>
               </div>
             </div>
           </div>

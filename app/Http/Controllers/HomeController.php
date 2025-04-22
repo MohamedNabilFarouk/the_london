@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Service;
 use App\Contact;
 use App\Subscribe;
-use App\Blog;
+use App\Video;
 use App\Slider;
 use App\Choose_us;
 use Illuminate\Http\Request;
@@ -34,8 +34,8 @@ class HomeController extends Controller
         $services = Service::orderBy('id','Asc')->get();
         $sliders = Slider::orderBy('id','Asc')->get();
         $choose_us = Choose_us::orderBy('id','Asc')->get();
-        $blogs = Blog::orderBy('id','desc')->get();
-        return view('site.index',compact('services','blogs','sliders','choose_us'));
+        $videos = Video::orderBy('id','desc')->get();
+        return view('site.index',compact('services','videos','sliders','choose_us'));
     }
    
     public function shop($category_id){

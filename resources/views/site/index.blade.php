@@ -22,11 +22,11 @@
                 <!-- Content Column -->
                 <div class="content-column col-lg-6 col-md-12 col-sm-12">
                   <div class="inner-column">
-                    <div class="title">WELCOME TO The London</div>
+                    <div class="title">{{__("The London Car Trading Company")}}</div>
                     <h1>{{ $s->title }}</h1>
                    
                     <div class="btns-box clearfix">
-                      <a class="btn-style-one theme-btn" href="#"><span class="txt">Read More
+                      <a class="btn-style-one theme-btn" href="{{ route('about') }}"><span class="txt">{{__("Read More")}}
                           <i class="fa fa-arrow-circle-right"></i></span></a>
                     </div>
                     <div class="slide-arrow scroll-to-target" data-target=".about-section">
@@ -88,8 +88,8 @@
               <div class="content-column col-lg-6 col-md-12 col-sm-12">
                 <div class="inner-column">
                   <div class="sec-title light">
-                    <div class="title">about us</div>
-                    <h2>Welcome to The London,</h2>
+                    <div class="title">{{ __("About Us") }}</div>
+                    <h2>{{__("The London Car Trading Company")}},</h2>
                   </div>
                   <div class="white-text">
                     {!! app()->getLocale() == 'en' ? $site_settings->about_des: $site_settings->about_des_ar !!}
@@ -109,10 +109,9 @@
         <div class="auto-container">
           <!-- Sec Title -->
           <div class="sec-title centered">
-            <div class="title">our services</div>
+            <div class="title">{{ __("our services") }}</div>
             <h2>
-              We ensure best financial services <br />
-              for our clients.
+              {{ __("We are a professional and creative company and we offer you a trusty Trading cars services") }}
             </h2>
           </div>
           <!-- End Sec Title -->
@@ -137,9 +136,9 @@
                   <div class="lower-content">
                     <h4><a href="#">{{ $s->title }}</a></h4>
                     <div class="text">
-                      {!! \Illuminate\Support\Str::limit($s->des, 100, '...') !!}
+                      {!! \Illuminate\Support\Str::limit(strip_tags($s->des), 100, '...') !!}
                     </div>
-                    <a href="#" class="read-more">Read More</a>
+                    <a href="#" class="read-more">{{__("Read More")}}</a>
                   </div>
                 </div>
               </div>
@@ -158,8 +157,8 @@
         <div class="auto-container">
           <!-- Sec Title -->
           <div class="sec-title light centered">
-            <div class="title">why us</div>
-            <h2>Why Choose Us</h2>
+            <div class="title">{{ __("why us") }}</div>
+            <h2>{{ __("Why Choose Us") }}</h2>
           </div>
           <!-- End Sec Title -->
           <div class="inner-container">
@@ -193,8 +192,8 @@
                                 <span class="count-text" data-speed="3000" data-stop="{{ $site_settings->customer_satisfaction }}">0</span>%
                               </div>
                               <div class="counter-title">
-                                Customer <br />
-                                satisfaction
+                                {{ __("Customers") }} <br />
+                                {{ __("satisfaction") }}
                               </div>
                             </div>
                           </div>
@@ -212,8 +211,8 @@
                                 <span class="count-text" data-speed="4000" data-stop="200">{{ $site_settings->monthly_active_user }}</span>+
                               </div>
                               <div class="counter-title">
-                                Monthly active <br />
-                                users
+                                {{ __("Monthly active") }} <br />
+                                {{ __("users") }}
                               </div>
                             </div>
                           </div>
@@ -231,7 +230,7 @@
                                 <span class="count-text" data-speed="3000" data-stop="{{ $site_settings->experience }}">0</span>+
                               </div>
                               <div class="counter-title">
-                                Experience <br />
+                                {{ __("Experience") }} <br />
                               
                               </div>
                             </div>
@@ -269,245 +268,74 @@
 
     
 
-      <!-- Faq's Section -->
-      <section class="faq-section">
+      <!-- vid's Section -->
+      <section class="services-section">
         <div class="auto-container">
           <!-- Sec Title -->
           <div class="sec-title centered">
-            <div class="title">faq</div>
-            <h2>Frequently Asked Questions</h2>
+            <div class="title">{{ __("Our Videos") }}</div>
+            <h2>
+              {{-- {{ __("We are a professional and creative company and we offer you a trusty Trading cars services") }} --}}
+            </h2>
           </div>
           <!-- End Sec Title -->
           <div class="inner-container">
-            <div class="section-icons-outer parallax-scene-6">
+            <div class="section-icons-outer parallax-scene-3">
               <div data-depth="0.20" class="icon-layer" style="background-image: url(images/icons/icon-1.png)"></div>
-              <div data-depth="0.40" class="pattern-layer"
+              <div data-depth="0.20" class="pattern-layer"
                 style="background-image: url(images/background/pattern-3.png)"></div>
+              <div data-depth="0.20" class="pattern-layer-two"
+                style="background-image: url(images/background/pattern-4.png)"></div>
             </div>
-            <div class="row clearfix">
-              <!-- Accordion Column -->
-              <div class="accordion-column col-lg-6 cl-md-12 col-sm-12">
-                <div class="inner-column">
-                  <!-- Accordian Box -->
-                  <ul class="accordion-box">
-                    <!--Block-->
-                    <li class="accordion block">
-                      <div class="acc-btn">
-                        <div class="icon-outer">
-                          <span class="icon icon-plus fa fa-plus"></span>
-                          <span class="icon icon-minus fa fa-minus"></span>
-                        </div>
-                        1. Compare personalized quotes?
-                      </div>
-                      <div class="acc-content">
-                        <div class="content">
-                          <div class="text">
-                            Lorem Ipsum is simply dummy text of the printing
-                            and typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printer took a galley
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-
-                    <!--Block-->
-                    <li class="accordion block active-block">
-                      <div class="acc-btn active">
-                        <div class="icon-outer">
-                          <span class="icon icon-plus fa fa-plus"></span>
-                          <span class="icon icon-minus fa fa-minus"></span>
-                        </div>
-                        2. Compare personalized quotes?
-                      </div>
-                      <div class="acc-content current">
-                        <div class="content">
-                          <div class="text">
-                            Lorem Ipsum is simply dummy text of the printing
-                            and typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printer took a galley
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-
-                    <!--Block-->
-                    <li class="accordion block">
-                      <div class="acc-btn">
-                        <div class="icon-outer">
-                          <span class="icon icon-plus fa fa-plus"></span>
-                          <span class="icon icon-minus fa fa-minus"></span>
-                        </div>
-                        3. Compare personalized quotes?
-                      </div>
-                      <div class="acc-content">
-                        <div class="content">
-                          <div class="text">
-                            Lorem Ipsum is simply dummy text of the printing
-                            and typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printer took a galley
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-
-                    <!--Block-->
-                    <li class="accordion block">
-                      <div class="acc-btn">
-                        <div class="icon-outer">
-                          <span class="icon icon-plus fa fa-plus"></span>
-                          <span class="icon icon-minus fa fa-minus"></span>
-                        </div>
-                        4. Compare personalized quotes?
-                      </div>
-                      <div class="acc-content">
-                        <div class="content">
-                          <div class="text">
-                            Lorem Ipsum is simply dummy text of the printing
-                            and typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the
-                            1500s, when an unknown printer took a galley
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Image Column -->
-              <div class="image-column col-lg-6 cl-md-12 col-sm-12">
-                <div class="inner-column wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+            <div class="three-item-carousel owl-carousel owl-theme">
+              @foreach ( $videos as $s )
+                
+             
+              <!-- Service Block -->
+              <div class="service-block">
+                <div class="inner-box">
                   <div class="image">
-                    <span class="triangle-one"></span>
-                    <span class="triangle-two"></span>
-                    <img src="{{ asset($site_settings->asked_questions_image) }}" alt="" />
+                    <a href="{{  $s->video  }}" target="_blank"><img src="{{ $s->image }}" alt="" />
+                      <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    
+                    </a>
+                  </div>
+                  <div class="lower-content">
+                    <h4><a href="{{  $s->video  }}">{{ $s->title }}</a></h4>
+                    <a href="{{ $s->video }}" target="_blank" class="read-more">{{__("Show Video")}}</a>
                   </div>
                 </div>
               </div>
+
+          @endforeach
+
+          
             </div>
           </div>
         </div>
       </section>
       <!-- End Faq's Section -->
+<style>
+  .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the icon */
+    color: white; /* Icon color */
+    font-size: 48px; /* Icon size */
+    display: none; /* Initially hidden */
+}
 
-      <!-- Testimonial Section -->
-      <section class="testimonial-section">
-        <div class="auto-container">
-          <div class="inner-container">
-            <div class="section-icons-outer parallax-scene-7">
-              <div data-depth="0.20" class="icon-layer" style="background-image: url(images/icons/icon-1.png)"></div>
-              <div data-depth="0.30" class="pattern-layer"
-                style="background-image: url(images/background/pattern-3.png)"></div>
-            </div>
-            <div class="row clearfix">
-              <!-- Image Column -->
-              <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                <div class="inner-column">
-                  <div class="image titlt" data-tilt data-tilt-max="2">
-                    <img src="{{ asset($site_settings->what_clients_says_image) }}" alt="" />
-                    <span class="triangle-one"></span>
-                    <span class="triangle-two"></span>
-                  </div>
-                </div>
-              </div>
+.image .play-icon {
+    display: block; /* Show on hover */
+}
+</style>
 
-              <!-- Carousel Column -->
-              <div class="carousel-column col-lg-6 col-md-12 col-sm-12">
-                <div class="inner-column">
-                  <!-- Sec Title -->
-                  <div class="sec-title">
-                    <div class="title">feedback</div>
-                    <h2>
-                      What Clients Says <br />
-                      About us?
-                    </h2>
-                  </div>
-                  <div class="single-item-carousel owl-carousel owl-theme">
-                    <!-- Testimonial Block -->
-                    <div class="testimonial-block">
-                      <div class="inner-box">
-                        <div class="quote-icon">
-                          <img src="images/icons/quote-icon.png" alt="" />
-                        </div>
-                        <div class="text">
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s,
-                          when an unknown printer took a galley of type and
-                          scrambled it to make a type specimen.
-                        </div>
-                        <div class="author-box">
-                          <div class="box-inner">
-                            <div class="author-image">
-                              <img src="images/resource/author-2.jpg" alt="" />
-                            </div>
-                            Luiz Jenifer<br />
-                            <div class="designation">Client</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
-                    <!-- Testimonial Block -->
-                    <div class="testimonial-block">
-                      <div class="inner-box">
-                        <div class="quote-icon">
-                          <img src="images/icons/quote-icon.png" alt="" />
-                        </div>
-                        <div class="text">
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s,
-                          when an unknown printer took a galley of type and
-                          scrambled it to make a type specimen.
-                        </div>
-                        <div class="author-box">
-                          <div class="box-inner">
-                            <div class="author-image">
-                              <img src="images/resource/author-2.jpg" alt="" />
-                            </div>
-                            Luiz Jenifer<br />
-                            <div class="designation">Client</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
-                    <!-- Testimonial Block -->
-                    <div class="testimonial-block">
-                      <div class="inner-box">
-                        <div class="quote-icon">
-                          <img src="images/icons/quote-icon.png" alt="" />
-                        </div>
-                        <div class="text">
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s,
-                          when an unknown printer took a galley of type and
-                          scrambled it to make a type specimen.
-                        </div>
-                        <div class="author-box">
-                          <div class="box-inner">
-                            <div class="author-image">
-                              <img src="images/resource/author-2.jpg" alt="" />
-                            </div>
-                            Luiz Jenifer<br />
-                            <div class="designation">Client</div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- End Testimonial Section -->
+
 
       <!-- Awards Section -->
       {{-- <section class="awards-section">

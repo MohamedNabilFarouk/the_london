@@ -810,6 +810,7 @@
   -ms-transition: all 600ms ease;
   -o-transition: all 600ms ease;
   transition: all 600ms ease;
+  height: 250px;
 }
 
 /* .service-block .inner-box:hover .image img {
@@ -844,6 +845,9 @@
 
 .service-block .inner-box .text {
   margin-bottom: var(--margin-bottom-25);
+  height: 80px;
+  overflow: hidden;
+
 }
 
 .service-block .inner-box .read-more {

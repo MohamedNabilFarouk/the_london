@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en" @if (app()->getLocale() == 'ar') dir="rtl"@else dir="ltr" @endif)>
 
 
 <!-- Mirrored from themeim.com/demo/carsore/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 20 Mar 2025 14:03:58 GMT -->
 <head>
   <meta charset="utf-8" />
-  <title>London | Homepage</title>
+  <title>{{ env('APP_NAME') }}</title>
   <!-- Stylesheets -->
   <link href="{{ asset('site/css/bootstrap.css')}}" rel="stylesheet" />
   <link href="{{ asset('site/css/niceselect.css')}}" rel="stylesheet" />
-  <link href="{{ asset('site/css/style.css')}}" rel="stylesheet" />
+  @if(app()->getLocale()=='en')
+    <link href="{{ asset('site/css/style.css') }}" rel="stylesheet">
+    @else
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="{{ asset('site/css/style_rtl.css') }}" rel="stylesheet">
+    @endif
   <link href="{{ asset('site/css/responsive.css')}}" rel="stylesheet" />
 
   <!-- Switcher Mockup -->
@@ -94,25 +99,23 @@
                   <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                     <ul class="navigation clearfix">
                       <li class="current dropdown">
-                        <a href="{{ url('/') }}">Home</a>
+                        <a href="{{ url('/') }}">{{ __("Home") }}</a>
                         
                       </li>
                       <li>
-                        <a href="{{ route('about') }}">About Us</a>
+                        <a href="{{ route('about') }}">{{ __("About Us") }}</a>
                       </li>
                       <li class="">
-                        <a href="{{ route('services') }}">Services</a>
+                        <a href="{{ route('services') }}">{{ __("Services") }}</a>
                        
                       </li>
-                      <!-- <li class="">
-                        <a href="#">Blog</a>
-                       
-                      </li> -->
+                                          
                      
-                     
-                      <li><a href="{{ route('contact') }}">Contact us</a></li>
+                      <li><a href="{{ route('contact') }}">{{ __("Contact us") }}</a></li>
                     </ul>
+                    
                   </div>
+
                 </nav>
 
                 <!-- Main Menu End-->
@@ -122,8 +125,18 @@
                     <div class="box-inner">
                       <a class="phone" href="tel:+{{ $site_settings->phone }}">{{ $site_settings->phone }}
                         <span class="icon flaticon-call-2"></span></a>
+
+                        @if(\App::getLocale() == 'en')
+                        <a  href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}" >   <span class="fa fa-language mr-2"></span>العربية</a>
+    
+                        @else
+                        <a  href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}" >   <span class="fa fa-language mr-2"></span>En</a>
+    
+        
+                        @endif
                     </div>
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -193,7 +206,7 @@
               <!-- Title Column -->
               <div class="title-column col-lg-5 col-md-12 col-sm-12">
                 <div class="inner-column">
-                  <h3>Let us take care about your veicle</h3>
+                  <h3>{{ __("To receive all new updates") }}</h3>
                 </div>
               </div>
 
@@ -232,7 +245,7 @@
               <div class="info-column col-lg-4 col-md-6 col-sm-12">
                 <div class="inner-column">
                   <span class="icon flaticon-call-2"></span>
-                  call now<br />
+                  {{ __("call now") }}<br />
                   <a href="tel:{{ $site_settings->phone }}">{{ $site_settings->phone }}</a>
                 </div>
               </div>
@@ -241,7 +254,7 @@
               <div class="info-column col-lg-4 col-md-6 col-sm-12">
                 <div class="inner-column">
                   <span class="icon flaticon-email-2"></span>
-                  24*7 online Support<br />
+                  {{ __("24*7 online Support") }}<br />
                   <a href="mailto:{{ $site_settings->email }}">{{ $site_settings->email }}</a>
                 </div>
               </div>
@@ -250,7 +263,7 @@
               <div class="info-column col-lg-4 col-md-6 col-sm-12">
                 <div class="inner-column">
                   <span class="icon flaticon-maps-and-flags"></span>
-                   Address<br />
+                   {{ __("Address") }}<br />
                   <strong>{!! app()->getLocale() == 'en' ? $site_settings->address_en : $site_settings->address_ar !!}</strong>
                 </div>
               </div>
@@ -262,13 +275,13 @@
           <div class="widgets-section">
             <div class="row clearfix">
               <!-- Footer Column -->
-              <div class="footer-column col-lg-4 col-md-6 col-sm-12">
+              <div class="footer-column col-lg-4 col-md-4 col-sm-12">
                 <div class="footer-widget logo-widget">
                   <div class="logo">
                     <a href="{{ url('/') }}"><img src="{{ $site_settings->logo }}" alt="The London" /></a>
                   </div>
-                  <div class="white-text">
-                    {!! app()->getLocale() == 'en' ? \Illuminate\Support\Str::limit($site_settings->about_des , 100 , '....'): \Illuminate\Support\Str::limit($site_settings->about_des_ar,100,'....') !!}
+                  <div class="text">
+                    {!! app()->getLocale() == 'en' ? \Illuminate\Support\Str::limit(strip_tags($site_settings->about_des) , 100 , '....') : \Illuminate\Support\Str::limit(strip_tags($site_settings->about_des_ar),100,'....') !!}
 
                   </div>
                   <!-- Social Box -->
@@ -283,31 +296,38 @@
               </div>
 
               <!-- Footer Column -->
-              <div class="footer-column col-lg-5 col-md-6 col-sm-12">
+              <div class="footer-column col-lg-5 col-md-5 col-sm-12">
                 <div class="footer-widget links-widget">
                   <div class="row clearfix">
                     <!-- Column -->
                     <div class="column col-lg-6 col-md-6 col-sm-12">
-                      <h3>Company</h3>
+                      <h3>{{ __("Company") }}</h3>
                       <ul class="list-links">
-                        <li><a href="{{ route('about') }}">About us</a></li>
+                        <li><a href="{{ route('about') }}">{{ __("About Us") }}</a></li>
                        
-                        <li><a href="{{ route('services') }}">Services</a></li>
+                        <li><a href="{{ route('services') }}">{{ __("Services") }}</a></li>
                        
                        
-                        <li><a href="{{ route('contact') }}">contact us</a></li>
+                        <li><a href="{{ route('contact') }}">{{ __("Contact us") }}</a></li>
                       </ul>
                     </div>
                     <!-- Column -->
-                   
+                    <div class="column col-lg-6 col-md-6 col-sm-12">
+                      <h3>{{ __("Services") }}</h3>
+                      <ul class="list-links">
+                        @foreach($allservices as $s )
+                        <li><a href="{{ route('service.details',$s->slug) }}">{{ $s->title }}</a></li>
+                       @endforeach
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <!-- Footer Column -->
-              <div class="footer-column col-lg-3 col-md-6 col-sm-12">
+              <div class="footer-column col-lg-3 col-md-3 col-sm-12">
                 <div class="footer-widget quote-widget">
-                  <h3>Request a Quote</h3>
+                  <h3>{{__("Request a Quote")}}</h3>
 
                   <!-- Quote Form -->
                   <div class="quote-form">
@@ -315,27 +335,27 @@
                       @csrf
                       <div class="clearfix">
                         <div class="form-group">
-                          <input type="text" name="name" placeholder="Your Name *" required="" />
+                          <input type="text" name="name" placeholder="{{ __("Name") }}" required="" />
                         </div>
 
                         <div class="form-group">
-                          <input type="email" name="email" placeholder="Your Email" required="" />
+                          <input type="email" name="email" placeholder="{{ __("Email") }}" required="" />
                         </div>
 
                         <!--Form Group-->
                         <div class="form-group">
                           <div class="form-group">
-                            <input type="text" name="subject" placeholder="Subject" required="" />
+                            <input type="text" name="subject" placeholder="{{ __("Subject") }}" required="" />
                           </div>
                         </div>
 
                         <div class="form-group">
-                          <textarea type="text" name="message" placeholder="Message" required=""></textarea>
+                          <textarea type="text" name="message" placeholder="{{ __("Message") }}" required=""></textarea>
                         </div>
 
                         <div class="form-group">
                           <button class="theme-btn submit-btn" type="submit" name="submit-form">
-                            Submit Now
+                           {{__("Send Message")}}
                           </button>
                         </div>
                       </div>
@@ -346,12 +366,15 @@
             </div>
           </div>
 
+
+      
+
           <div class="footer-bottom">
             <div class="clearfix">
               <div class="pull-left">
                 <div class="copyright">
-                  Copyright &copy; 2025. All rights reserved by <br />
-                  <span>The London Company.</span>
+                   &copy; {{ date('Y') }}. {{__("All rights reserved by")}} <br />
+                  <span>{{__("The London Company")}}</span>
                 </div>
               </div>
              

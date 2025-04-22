@@ -3,8 +3,7 @@
 namespace App\Providers;
 use App\SiteSetting;
 use App\SocialSetting;
-use App\Team;
-use App\Category;
+use App\Service;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,13 +28,12 @@ class AppServiceProvider extends ServiceProvider
     {
         $site_settings = SiteSetting::find(1);
        $social_settings = SocialSetting::all();
-       $categories = Category::all();
-       $team = Team::orderBy('id','desc')->get();
+       $allservices = Service::all();
+     
         View::share([
             'site_settings' =>  $site_settings,
            'social_settings' => $social_settings,
-           'team' => $team,
-           'categories' => $categories,
+           'allservices' => $allservices,
         ]);
     }
 }

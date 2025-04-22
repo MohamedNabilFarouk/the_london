@@ -8,7 +8,7 @@
             <!--begin::Page title-->
             <div class="d-flex align-items-center me-3">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">Team
+                <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">video
                     <!--begin::Separator-->
                     <span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
                     <!--end::Separator-->
@@ -32,38 +32,33 @@
     <div class="container-fluid page__container p-2">
 
         <div class="card rounded card-form__body card-body shadow-lg">
-            <form method="post" action="{{ route('team.update', $team->id) }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('video.update', $data->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('put')
 
-                <div class="form-group mb-10">
-                    <label for="exampleFormControlInput1" class="required form-label">Name</label>
-                    <input type='text' name="name" class="form-control" value="{{ $team->name }}" />
-                </div>
+                
                 <div class="form-group mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">title En</label>
-                    <input type='text' name="title_en" class="form-control" value="{{ $team->title_en }}" />
+                    <input type='text' name="title_en" class="form-control" value="{{ $data->title_en }}" />
                 </div>
                 <div class="form-group mb-10">
                     <label for="exampleFormControlInput1" class="required form-label">title Ar</label>
-                    <input type='text' name="title_ar" class="form-control" value="{{ $team->title_ar }}" />
+                    <input type='text' name="title_ar" class="form-control" value="{{ $data->title_ar }}" />
                 </div>
 
 
-                <div class="form-group mb-10">
-                    <label for="exampleFormControlInput1" class="required form-label">Description En</label>
-                    <textarea name="des_en" class="form-control form-control-solid">{{ $team->des_en }}</textarea>
-                </div>
-                <div class="form-group mb-10">
-                    <label for="exampleFormControlInput1" class="required form-label">Description Ar</label>
-                    <textarea name="des_ar" class="form-control form-control-solid">{{ $team->des_ar }}</textarea>
-                </div>
-
+                <div class="form-group">
+                    <label for="exampleFormControlInput1" class="required form-label">Image</label>
+                    <input class="image_name" type="file" name="image" value=""> 
+                </div> 
 
            
 
 
-
+                <div class="form-group mb-10">
+                    <label for="exampleFormControlInput1" class="required form-label">Video Link</label>
+                    <input type='text' name="video" class="form-control" value="{{ $data->video }}" />
+                </div>
 
                
 
