@@ -170,7 +170,14 @@
                   <div class="box-inner">
                     <a class="phone" href="tel:+{{ $site_settings->phone }}">{{ $site_settings->phone }} <span
                         class="icon flaticon-call-2"></span></a>
-                  </div>
+
+                        @if(\App::getLocale() == 'en')
+                        <a  href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}" >   <span class="fa fa-language mr-2"></span>العربية</a>
+    
+                        @else
+                        <a  href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}" >   <span class="fa fa-language mr-2"></span>En</a>
+                 @endif
+                      </div>
                 </div>
               </div>
             </div>
